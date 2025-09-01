@@ -1,0 +1,22 @@
+{
+  "name": "blog-web-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "browser-sync start --proxy 'http://localhost:3000' --files 'public/views/*.ejs, public/*css, public/*js' ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
+  }
+}
