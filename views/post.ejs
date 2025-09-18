@@ -52,10 +52,94 @@
     </nav>
 
 
+    <div class = "editpost-popup-modal" id="editpost-popup-modal">
+        <div class="editpost-overlay-modal" id="editpost-overlay-modal">
+        
+            <div class="editpost-blog-form col-md-7 col-lg-8">
+                <h4 class="mb-3">EDIT BLOG</h4>
+
+                <form class="form-content" action="/update-post/<%= post.id %>" method="post" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-sm-6"> <label for="firstName" class="form-label">First name</label> 
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid first name
+                            </div>
+                        </div>
+                        <div class="col-sm-6"> <label for="lastName" class="form-label">Last name</label> 
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                       
+                        <div class="col-12"> <label for="email" class="form-label">Email <span
+                                    class="text-body-secondary">(Optional)</span></label> <input type="email"
+                                class="form-control" id="email" name="email" placeholder="you@example.com" required="">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address.
+                            </div>
+                        </div>
+                        <div class="col-12"> <label for="content" class="form-label">BLOG</label> 
+                            <textarea class="form-control" rows="5" name="content" id="content" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter your blog.
+                            </div>
+                        </div>
+
+                        <div class="col-12"> 
+                            <label for="blogImage" class="form-label">Want to change this image?</label> 
+                            <div class="radio-group">
+                              <label for="changeImage"><input type="radio" id="changeImageYes" name="changeImage" value="yes"> yes</label>
+                              <label for="changeImage"><input type="radio" id="changeImageNo" name="changeImage" value="no" checked> no</label>
+                            </div>
+                            <img id="editpost-image-preview" class="editpost-image-preview" src="" alt="">                          
+                          </div>
+                        <div class="changeBlogimage-container col-12" id="changeBlogimage-container" style="display: none;"> 
+                            <label for="changeBlogImage" class="form-label">UPLOAD AN IMAGE</label> 
+                          <input class="form-control" type="file" name="changeBlogImage" id="changeBlogImage" accept="image/*" >
+                        </div>
+
+                        
+                    
+        
+                    <hr class="my-4">
+        
+                    <input type="text" id="postDate" name="date" placeholder="please select a date" required="">
+                    
+                    <div class="form-check"> 
+                        <input type="checkbox" class="form-check-input" id="today-date" name="" > 
+                        <label class="form-check-label" for="today-date">Today date as written date address</label>
+                    </div>
+                    
+                </div>
+
+                    <hr class="my-4">
+                    <button class="checkout-btn w-100 btn btn-primary btn-lg my-1" id="edit-update-btn" type="submit">update</button>
+                    <button class="close-btn w-100 btn btn-primary btn-lg my-1" id="edit-post-close-btn" type="button">Ok, Close</button>
+                </form>
+            </div>
+        
+        
+              
+        </div>
+    </div>
+
+
     <div class="container main-container d-flex flex-column">
 
         <div class="img-container">
-        <button class="overlay-btn" id="overlay-btn" ><a href="/">BACK TO HOME</a></button>
+
+        <button class="edit-post-btn" id="edit-post-btn" 
+        data-id="<%= post.id %>" 
+        data-firstName="<%= post.firstName %>"
+        data-lastName="<%= post.lastName %>"
+        data-email="<%= post.email %>"
+        data-content="<%= post.content %>"
+        data-date="<%= post.date %>"
+        data-image = "<%= post.blogImage %>">EDIT POST</button>
+
+        <button class="del-post-btn" id="del-post-btn" data-id="<%= post.id %>" >DEL POST</button>
 
         <% if (post.blogImage) { %>
         <img src="/uploads/<%= post.blogImage %>" class="hero-img" alt="">
